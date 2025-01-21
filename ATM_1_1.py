@@ -27,7 +27,7 @@ class ATM():
         self.rootna = Toplevel()
         self.rootna.geometry("1276x710")
         self.rootna.title("ACCOUNT-DEBIT CARD")
-    
+        self.rootna.attributes("-fullscreen", True) 
         self.title = Label(self.rootna,text="***You Have Won A Reward***",fg="dark blue",\
                            font=("Arial Black",30))
         self.title.pack(anchor=CENTER,side=TOP)
@@ -73,7 +73,7 @@ class ATM():
         self.root1c = Toplevel()
         self.root1c.geometry("1276x710")
         self.root1c.title("ATM-ProcessMenu")
-  
+        self.root1c.attributes("-fullscreen", True) 
         self.title = Label(self.root1c,text="Enter Withdraw Amount !",fg="dark blue",font=("Arial Black",34))
         self.title.pack(anchor=CENTER,side=TOP)
         self.entry = Entry(self.root1c,width=100)
@@ -122,7 +122,7 @@ class ATM():
         self.root1c = Toplevel()
         self.root1c.geometry("1276x710")
         self.root1c.title("ATM-ProcessMenu")
-  
+        self.root1c.attributes("-fullscreen", True) 
         self.title = Label(self.root1c,text="Enter Deposit Amount !",fg="dark blue",font=("Arial Black",34))
         self.title.pack(anchor=CENTER,side=TOP)
         self.entry = Entry(self.root1c,width=100)
@@ -150,10 +150,10 @@ class ATM():
         if self.clicked == "ok":
             main
     def check_balance(self):
-        self.root2c = Toplevel()
+        self.root2c = Tk()
         self.root2c.geometry("1276x710")
         self.root2c.title("ATM-ProcessMenu")
-  
+        self.root2c.attributes("-fullscreen", True) 
         self.title = Label(self.root2c,text="Available Balance In Account !",fg="dark blue",font=("Arial Black",34))
         self.title.pack(anchor=CENTER,side=TOP)
         self.title2 = Label(self.root2c,text=f"Available Balance In Your Account Is : "\
@@ -165,18 +165,20 @@ class ATM():
         self.title2.pack(pady=25,anchor=CENTER,side=TOP)
         self.title3.pack(anchor=CENTER,side=TOP)
         self.button.pack(pady=25,anchor=CENTER,side=BOTTOM)          
-    def update_pin():
+    def update_pin(previous_window):
         pass
-    def money_transfer():
+    def money_transfer(previous_window):
         pass
-    def show_account():
+    def show_account(previous_window):
         pass
-    def net_banking():
+    def net_banking(previous_window):
         pass
 def generate_pin():
     root2a = Toplevel()
     root2a.geometry("1276x710")
     root2a.title("ACCOUNT-Generator")
+    root2a.attributes("-fullscreen", True) 
+    # previous_window.destroy()
     title = Label(root2a,text="Generate Your New PIN!",fg="dark blue",font=("Arial Black",34))
     title.pack(anchor=CENTER,side=TOP) 
     entry1 = Entry(root2a,show="*",width=100)
@@ -216,10 +218,12 @@ def generate_pin():
 def not_release():
     pass
 def account_type1():
-    root4 = Toplevel()
+    root4 = Tk()
     obj = ATM()
     root4.geometry("1276x710")
     root4.title("ATM-ProcessMenu")
+    root4.attributes("-fullscreen", True)
+    # previous_window.destroy()
     frame = Frame(root4)
     title = Label(root4,text="Select Account Type !",fg="dark blue",font=("Arial Black",34))
     title.pack(anchor=CENTER,side=TOP)
@@ -237,10 +241,12 @@ def account_type1():
     button4.pack(pady=20)
     frame.pack(pady=20,anchor=CENTER,side=RIGHT)
 def account_type2():
-    root4 = Toplevel()
+    root4 = Tk()
     obj = ATM()
     root4.geometry("1276x710")
     root4.title("ATM-ProcessMenu")
+    root4.attributes("-fullscreen", True)
+    # previous_window.destroy()
     frame = Frame(root4)
     title = Label(root4,text="Select Account Type !",fg="dark blue",font=("Arial Black",34))
     title.pack(anchor=CENTER,side=TOP)
@@ -257,12 +263,13 @@ def account_type2():
     button3.pack(pady=20)
     button4.pack(pady=20)
     frame.pack(pady=20,anchor=CENTER,side=RIGHT)
-def TransactionType():
-    root4 = Toplevel()
+def TransactionType(previous_window):
+    previous_window.destroy()
+    root4 = Tk()
     obj = ATM()
     root4.geometry("1276x710")
     root4.title("ATM-ProcessMenu")
-
+    root4.attributes("-fullscreen", True)
     frame = Frame(root4)
     title = Label(root4,text="Select Transaction Type !",fg="dark blue",font=("Arial Black",34))
     title.pack(anchor=CENTER,side=TOP)
@@ -271,7 +278,7 @@ def TransactionType():
     button2 = Button(frame,text="Deposit Cash",bd='5',height=2,width=20,font="Algerian",fg="black",\
                      bg="dark blue",command=PinVerification2)
     button3 = Button(frame,text="Check Balance",bd='5',height=2,width=20,font="Algerian",fg="black",\
-                     bg="dark blue",command=PinVerification3)
+                     bg="dark blue",command= PinVerification3)
     button4 = Button(frame,text="Generate New PIN",bd='5',height=2,width=20,font="Algerian",fg="black",\
                      bg="dark blue",command=generate_pin)
     button1.pack(pady=20)
@@ -302,14 +309,15 @@ def to_home():
     time.sleep(2)
     choose = mb.showerror("Wrong-PIN","Provided PIN Is Wrong...!")
     if choose == "ok":
-        main 
+        main()
 def PinVerification3():
-    time.sleep(2)
+    # time.sleep(2)
     root3 = Toplevel()
     obj = ATM()
     root3.geometry("1276x710")
     root3.title("ATM-PIN")
- 
+    root3.attributes("-fullscreen", True)
+    # previous_window.destroy()
     title = Label(root3,text="Please Enter Your CARD Pin !",fg="dark blue",font=("Arial Black",34))
     title.pack(anchor=CENTER,side=TOP)
     button9 = Button(root3,text="Cancel",bd='5',height=2,width=20,font="Algerian",fg="black",\
@@ -324,7 +332,7 @@ def PinVerification3():
             value = int(enterpin.get())
             if value == pin_value:
                 time.sleep(2)
-                choose = mb.showinfo("PIN-Vefied","PIN Verified Successfully!")
+                choose = mb.showinfo("PIN-Verified","PIN Verified Successfully!")
                 if choose == "ok":
                     obj.check_balance()
             else:
@@ -336,12 +344,13 @@ def PinVerification3():
     button9u.pack(pady=20,anchor=CENTER,side=RIGHT)
     root3.mainloop()
 def PinVerification2():
-    time.sleep(2)
+    # time.sleep(2)
     root3 = Toplevel()
     obj = ATM()
     root3.geometry("1276x710")
     root3.title("ATM-PIN")
- 
+    root3.attributes("-fullscreen", True)
+    # previous_window.destroy()
     title = Label(root3,text="Please Enter Your CARD Pin !",fg="dark blue",font=("Arial Black",34))
     title.pack(anchor=CENTER,side=TOP)
     button9 = Button(root3,text="Cancel",bd='5',height=2,width=20,font="Algerian",fg="black",\
@@ -356,7 +365,7 @@ def PinVerification2():
             value = int(enterpin.get())
             if value == pin_value:
                 time.sleep(2)
-                choose = mb.showinfo("PIN-Vefied","PIN Verified Successfully!")
+                choose = mb.showinfo("PIN-Verified","PIN Verified Successfully!")
                 if choose == "ok":
                     account_type2()
             else:
@@ -367,14 +376,14 @@ def PinVerification2():
                      bg="dark blue",command=input_value)
     button9u.pack(pady=20,anchor=CENTER,side=RIGHT)
     root3.mainloop()
-  
 def PinVerification1():
-    time.sleep(2)
+    # time.sleep(2)
     root3 = Toplevel()
     obj = ATM()
     root3.geometry("1276x710")
     root3.title("ATM-PIN")
- 
+    root3.attributes("-fullscreen", True)
+    # previous_window.destroy()
     title = Label(root3,text="Please Enter Your CARD Pin !",fg="dark blue",font=("Arial Black",34))
     title.pack(anchor=CENTER,side=TOP)
     button9 = Button(root3,text="Cancel",bd='5',height=2,width=20,font="Algerian",fg="black",\
@@ -389,7 +398,7 @@ def PinVerification1():
             value = int(enterpin.get())
             if value == pin_value:
                 time.sleep(2)
-                choose = mb.showinfo("PIN-Vefied","PIN Verified Successfully!")
+                choose = mb.showinfo("PIN-Verified","PIN Verified Successfully!")
                 if choose == "ok":
                     account_type1()
             else:
@@ -401,12 +410,13 @@ def PinVerification1():
     button9u.pack(pady=20,anchor=CENTER,side=RIGHT)
     root3.mainloop()
 
-    
 def Hindi():
     pass
-def English():
-    root2 = Toplevel()
+def English(previous_window):
+    previous_window.destroy()
+    root2 = Tk()
     obj = ATM()
+    root2.attributes("-fullscreen", True)
     root2.geometry("1276x710")
     root2.title("ACCOUNT-DEBIT CARD") 
     title = Label(root2,text="Please Insert Your Card!",fg="dark blue",font=("Arial Black",34))
@@ -414,28 +424,29 @@ def English():
     button9 = Button(root2,text="Cancel",bd='5',height=2,width=20,font="Algerian",fg="black",\
                      bg="dark blue",command=obj.testing_5a)
     button9.pack(pady=15,anchor=CENTER,side=BOTTOM)
-    def showmessage():
+    def showmessage(current_window):
         time.sleep(2)
         clickedok = mb.showinfo("Verified","Your DEBIT Card Details Successfully Verified!")
         if clickedok == "ok":
-            TransactionType()
-    button = Button(root2,text="Done",bd='5',height=2,width=20,font="Algerian",fg="black",bg="dark blue",command=showmessage)
+            TransactionType(current_window)
+    button = Button(root2,text="Done",bd='5',height=2,width=20,font="Algerian",fg="black",bg="dark blue",command=lambda: showmessage(root2))
     button.pack(anchor=CENTER,side=RIGHT)
     root2.mainloop()
 def Marathi():
     pass
-def Proceed ():
-    root1 = Toplevel()
+def Proceed (previous_window):
+    previous_window.destroy()
+    root1 = Tk()
     root1.geometry("1276x710")
     root1.title("ATM-Language")
-  
+    root1.attributes("-fullscreen", True)
     frame = Frame(root1)
     title = Label(root1,text="Please Select Any One Language To Proceed!...",fg="dark blue",font=("Arial Black",30))
     title.pack(pady=10,anchor=CENTER,side=TOP)
     but1 = Button(frame,text="Hindi",bd='5',height=2,width=20,font="Algerian",fg="black",\
                   bg="dark blue",command=Hindi)
     but2 = Button(frame,text="English",bd='5',height=2,width=20,font="Algerian",fg="black",\
-                  bg="dark blue",command=English)
+                  bg="dark blue",command=lambda: English(root1))
     but3 = Button(frame,text="Marathi",bd='5',height=2,width=20,font="Algerian",fg="black",\
                   bg="dark blue",command=Marathi)
     but1.pack(pady=20)
@@ -443,33 +454,38 @@ def Proceed ():
     but3.pack(pady=20)
     frame.pack(pady=20,anchor=CENTER,side=RIGHT)
     root1.mainloop()
-def for_test():
+def for_test(current_window):
     obj = ATM()
     if os.path.isfile("avail_balance_money"):
-        Proceed()
+        Proceed(current_window)
     else:
         obj.check_locker()
-def main():
-    root = Toplevel()
+def name_window():
+    root = Tk()
+    main.destroy()
     root.geometry("1276x710")
+    root.attributes("-fullscreen", True)
     root.title("ATM")
-    
     screen1 = Label(root,text= "It Is PRATAP BANKING \nSOLUTIONS",font=("Arial Black",72),fg= "red")
     screen1.pack(anchor=CENTER,side=TOP)
     button = Button(root,text="Cancel!",fg="black",bg="sky blue",bd='5',height=2,width=20,\
                      font="Algerian",command=root.destroy)
     button.pack(pady=20,anchor=CENTER,side=BOTTOM)
     button1 = Button(root,text="Proceed!",fg="black",bg="sky blue",bd='5',height=2,width=20,\
-                     font="Algerian",command=for_test)
+                     font="Algerian",command=lambda: for_test(root))
     button1.pack(pady=20,anchor=CENTER,side=BOTTOM)
     root.mainloop()
 
-root = Tk()
-root.geometry("1276x710")
-root.title("ATM")
-screen1 = Label(root,text= "Welcome!",font=("Arial Black",90),fg= "red")
+main = Tk()
+main.geometry("1276x710")
+main.title("ATM")
+main.attributes("-fullscreen", True)
+screen1 = Label(main,text= "Welcome!",font=("Arial Black",90),fg= "red")
 screen1.pack(anchor=CENTER,side=TOP)
-button1 = Button(root,text="Start Banking!",fg="black",bg="sky blue",bd='5',height=4,width=38,\
-                     font="Algerian",command=main)
+button1 = Button(main,text="Start Banking!",fg="black",bg="sky blue",bd='5',height=4,width=38,\
+                     font="Algerian",command=name_window)
+button2 = Button(main,text="Close",fg="black",bg="sky blue",bd='5',height=4,width=38,\
+                     font="Algerian",command=main.destroy)
+button2.pack(pady=30,anchor=CENTER,side=BOTTOM)
 button1.pack(pady=30,anchor=CENTER,side=BOTTOM)
-root.mainloop()
+main.mainloop()
